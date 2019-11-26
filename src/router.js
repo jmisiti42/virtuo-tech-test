@@ -1,12 +1,14 @@
 const { Router } = require('express');
 const { createCar, getCar, deleteCar, updateCar } = require('./controllers/cars')
+const { createStation, getStation, deleteStation, updateStation } = require('./controllers/stations')
 const cars = Router();
 
 const stations = Router();
 
-stations.get('/', (req, res) => {
-    res.json({ ok: true })
-});
+stations.get('/:stationId', getStation);
+stations.post('/', createStation);
+stations.delete('/:stationId', deleteStation);
+stations.put('/:stationId', updateStation);
 
 cars.get('/:carId', getCar);
 cars.post('/', createCar);
