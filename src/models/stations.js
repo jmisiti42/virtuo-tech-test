@@ -1,11 +1,8 @@
-const { Schema } = require('mongoose')
-const Cars = require('./cars')
+const { Schema, model } = require('mongoose')
 
-const Stations = new Schema({
+const StationsSchema = new Schema({
     name: { type: String, },
-    cars: [Cars]
+    cars: [{ type: Schema.Types.ObjectId, ref: 'Cars' }]
 });
 
-module.exports = {
-    Stations
-}
+module.exports = model('Stations', StationsSchema);

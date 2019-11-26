@@ -1,10 +1,8 @@
-const { Schema } = require('mongoose')
+const { Schema, model } = require('mongoose')
 
-const Cars = new Schema({
+const CarsSchema = new Schema({
     name: { type: String, },
-    available: { type: Boolean, default: true }
+    available: { type: Boolean, default: false }
 });
 
-module.exports = {
-    Cars
-}
+module.exports = model('Cars', CarsSchema);
